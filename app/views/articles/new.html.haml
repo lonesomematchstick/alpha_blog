@@ -1,28 +1,10 @@
 %h1 New Article
 
--if @article.errors.any?
-  %h2= "The following errors prevented the article from being saved"
-  %ul
-    - @article.errors.full_messages.each do |msg|
-      %li= msg
+= render partial: "layouts/partials/errors", locals: {f: @article}
 
+= render partial: "articles/partials/form"
 
-= form_with(scope: :article, url: articles_path, local: true) do |f|
-  .form-fields
-    .label
-      = f.label :title
-    .field
-      = f.text_field :title
-
-  %br
-
-  .form-fields
-    .label
-      = f.label :description
-    .field
-      = f.text_area :description, size: "30x8"
-
-  %br
-
-  .submit
-    = f.submit "Create Article"
+  
+%br
+.cancel
+  = link_to "Cancel", articles_path
