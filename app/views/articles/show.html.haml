@@ -1,3 +1,4 @@
+
 %h1= "Article # #{@article.id}"
 
 %strong Title: 
@@ -8,3 +9,12 @@
 
 %strong Description: 
 %span= "#{@article.description}"
+
+%br
+%br
+
+= link_to "Edit Article", edit_article_path(@article) 
+%span= "|"
+= link_to "Delete Article", article_path(@article), method: :delete, data: { confirm: "Are you sure?" }
+%span= "|"
+= link_to "All articles", articles_path
