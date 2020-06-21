@@ -1,18 +1,25 @@
-= form_with(model: @article, local: true) do |f|
-  .form-fields
-    .label
-      = f.label :title
-    .field
-      = f.text_field :title
+.container
+  .row.justify-content-center
+    .col-10
+      = render partial: "shared/errors", locals: {f: @article}
 
-  %br
+  .row.justify-content-center
+    .col-10
+      = form_with(model: @article, class: %w(shadow p-3 mb-4 bg-info rounded), local: true) do |f|
+        .row.form-group
+          = f.label :author, class: %w(col-2 col-form-label text-white)
+          .col-sm-10
+            = f.text_field :author, placeholder: "Author", class: "form-control shadow rounded"
+        .row.form-group
+          = f.label :title, class: %w(col-2 col-form-label text-white)
+          .col-sm-10
+            = f.text_field :title, placeholder: "Title", class: "form-control shadow rounded"
+        .row.form-group
+          = f.label :description, class: %w(col-2 col-form-label text-white)
+          .col-sm-10
+            =f.text_area :description, rows: 10, placeholder: "Description", class: %w(form-control shadow rouned)
 
-  .form-fields
-    .label
-      = f.label :description
-    .field
-      = f.text_area :description, size: "30x8"
+        .row.form-group.justify-content-center
+          = f.submit class: %w(btn btn-outline-light btn-lg)
 
-  %br
-  .submit
-    = f.submit
+    = link_to '[ Cancel - Return to Articles ]', articles_path, class: %w(text-info)

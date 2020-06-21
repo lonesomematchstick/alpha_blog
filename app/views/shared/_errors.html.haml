@@ -1,1 +1,8 @@
-_errors
+-if f.errors.any?
+  .alert.alert-danger.alert-dismissible.fade.show
+    %h4= "The following errors prevented the #{f.class.to_s.downcase} from being saved"
+    %button.close{type: 'button', data: { dismiss: 'alert' } }
+      %span{ 'aria-hidden' => true } &times;
+    %ul
+      - f.errors.full_messages.each do |msg|
+        %li= msg

@@ -1,10 +1,6 @@
-%h1 Editing An Article
+#page-content
+  %h1.text-center.mt-4 Edit Article
 
-= render partial: "layouts/partials/errors", locals: {f: @article}
+  = render partial: "shared/errors", locals: {f: @article}
 
-= render partial: "articles/partials/form"
-
-
-%br
-.cancel
-  = link_to "Back to all articles", articles_path
+  = render partial: "articles/partials/form"

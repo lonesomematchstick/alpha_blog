@@ -1,20 +1,14 @@
+#page-content
+  %h2.text-center.mt-4= "#{@article.title}"
 
-%h1= "Article # #{@article.id}"
-
-%strong Title: 
-%span= "#{@article.title}"
-
-%br
-%br
-
-%strong Description: 
-%span= "#{@article.description}"
-
-%br
-%br
-
-= link_to "Edit Article", edit_article_path(@article) 
-%span= "|"
-= link_to "Delete Article", article_path(@article), method: :delete, data: { confirm: "Are you sure?" }
-%span= "|"
-= link_to "All articles", articles_path
+  .container
+    .row.justify-content-center
+      .col-md-8
+        .card.text-center.shadow.mb-5.bg-light.rounded
+          .card-header.font-italic= "by #{@article.author}"
+          .card-body
+            .card-text.text-left= simple_format(@article.description)
+            = link_to "Edit Article", edit_article_path(@article), class: %w( btn btn-outline-info )
+            = link_to "Delete Article", article_path(@article), method: :delete, data: { confirm: "Are you sure?" }, class: %w( btn btn-outline-danger )
+          .card-footer.text-muted
+            .small= "Created #{time_ago_in_words(@article.updated_at)} ago"
