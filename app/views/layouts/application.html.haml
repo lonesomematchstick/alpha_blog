@@ -12,6 +12,7 @@
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body.d-flex.flex-column
     = render "layouts/partials/site_nav"
-    = render "layouts/partials/flash_messages"
-    = yield
+    #page-content
+      = render "layouts/partials/flash_messages"
+      = yield
     = render "layouts/partials/footer"
