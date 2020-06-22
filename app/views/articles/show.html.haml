@@ -4,7 +4,7 @@
   .row.justify-content-center
     .col-md-8
       .card.text-center.shadow.mb-5.bg-light.rounded
-        .card-header.font-italic= "by #{@article.author}"
+        .card-header.font-italic= "by #{@article.user.username}"
         .card-body
           .card-text.text-left= simple_format(@article.description)
           = link_to "Edit Article", edit_article_path(@article), class: %w( btn btn-outline-info )
