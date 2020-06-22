@@ -14,6 +14,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+    @article.user = User.find(User.pluck(:id).sample)
 
     if @article.save
       flash[:notice] = "The article was successfully created!"
@@ -48,7 +49,7 @@ class ArticlesController < ApplicationController
 
   def article_params
     params.require(:article).permit(
-      :author,
+      :user,
       :title,
       :description
     )

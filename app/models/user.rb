@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  has_secure_password
+
+  before_save { self.email = email.downcase }
 
   has_many :articles
 
@@ -10,4 +13,7 @@ class User < ApplicationRecord
                     length: { maximum: 50 },
                     uniqueness: { case_sensitive: false },
                     format: { with: VALID_EMAIL_REGEX }
+
+
+  
 end

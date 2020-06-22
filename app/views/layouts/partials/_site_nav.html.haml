@@ -1,5 +1,4 @@
 .navbar.navbar-expand-lg.navbar-light.bg-light
-  / %a.navbar-brand{id: "logo", href: "#"} ALPHA BLOG
   = link_to 'ALPHA BLOG', root_path, class: 'navbar-brand', id: "logo"
   %button.navbar-toggler{type: "button", "aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", data: {toggle: "collapse", target: "#navbarSupportedContent"}}
     %span.navbar-toggler-icon
@@ -9,10 +8,12 @@
       %li.nav-item.dropdown
         %a.nav-link.dropdown-toggle{id: 'navbarDropdown', role: 'button', href: "#", data: {toggle: "dropdown" }} Articles
         .dropdown-menu{"aria-labelledby" =>"navbarDropdown"}
-          = link_to "All Articles", articles_path, class: %w(dropdown-item)
+          = link_to "View Articles", articles_path, class: %w(dropdown-item)
           = link_to "Create New Article", new_article_path, class: %w(dropdown-item)
           .dropdown-divider
           %a.dropdown-item{href: '#'} Foo Bar
-    %form.form-inline.my-2.my-lg-0
-      %input.form-control.mr-sm-2{type: "search", placeholder: "Search", "aria-label" => "Search"}
-      %button.btn.btn-outline-success.my-2.my-sm-0{type: "submit"} Search
+    %li.nav-item.ml-auto
+      = link_to "Sign Up", signup_path, class: %w(text-dark btn btn-sm btn-light my-2 my-sm-0)
+    / %form.form-inline.my-2.my-lg-0
+    /   %input.form-control.mr-sm-2{type: "search", placeholder: "Search", "aria-label" => "Search"}
+    /   %button.btn.btn-outline-success.my-2.my-sm-0{type: "submit"} Search

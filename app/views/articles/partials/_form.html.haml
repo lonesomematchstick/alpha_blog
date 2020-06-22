@@ -7,10 +7,6 @@
     .col-10
       = form_with(model: @article, class: %w(shadow p-3 mb-4 bg-info rounded), local: true) do |f|
         .row.form-group
-          = f.label :author, class: %w(col-2 col-form-label text-white)
-          .col-sm-10
-            = f.text_field :author, placeholder: "Author", class: "form-control shadow rounded"
-        .row.form-group
           = f.label :title, class: %w(col-2 col-form-label text-white)
           .col-sm-10
             = f.text_field :title, placeholder: "Title", class: "form-control shadow rounded"
