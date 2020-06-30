@@ -1,2 +1,13 @@
-%h2.text-center.mt-4= "Hi #{@user.username}!"
+%h1.text-center.mt-4= "#{@user.username.upcase}'S PROFILE"
 
+.row.justify-content-center.my-4
+  = gravatar_for(@user, size: 150)
+
+- if logged_in? && @user == current_user
+  .text-center
+    = link_to 'Edit your profile', edit_user_path(@user), class: %w( btn btn-info )
+
+%h2.text-center.mt-4 Articles
+
+
+= render partial: "articles/partials/article"

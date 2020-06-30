@@ -1,19 +1,34 @@
 .navbar.navbar-expand-lg.navbar-light.bg-light
   = link_to 'ALPHA BLOG', root_path, class: 'navbar-brand', id: "logo"
-  %button.navbar-toggler{type: "button", "aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", data: {toggle: "collapse", target: "#navbarSupportedContent"}}
+  %button.navbar-toggler{type: "button", data: {toggle: "collapse", target: "#navbarSupportedContent"}}
     %span.navbar-toggler-icon
 
   .collapse.navbar-collapse#navbarSupportedContent
     %ul.navbar-nav.mr-auto
+      %li.nav-item
+        = link_to "Bloggers", users_path, class: %w(text-light nav-link)
       %li.nav-item.dropdown
-        %a.nav-link.dropdown-toggle{id: 'navbarDropdown', role: 'button', href: "#", data: {toggle: "dropdown" }} Articles
-        .dropdown-menu{"aria-labelledby" =>"navbarDropdown"}
+        %a.nav-link.dropdown-toggle{id: 'articles_dropdown', role: 'button', href: "#", data: {toggle: "dropdown" }} Articles
+        .dropdown-menu{"aria-labelledby" =>"articles_dropdown"}
           = link_to "View Articles", articles_path, class: %w(dropdown-item)
-          = link_to "Create New Article", new_article_path, class: %w(dropdown-item)
+          - if logged_in?
+            = link_to "Create New Article", new_article_path, class: %w(dropdown-item)
           .dropdown-divider
           %a.dropdown-item{href: '#'} Foo Bar
-    %li.nav-item.ml-auto
-      = link_to "Sign Up", signup_path, class: %w(text-dark btn btn-sm btn-light my-2 my-sm-0)
+      - if logged_in?
+        %li.nav-item.dropdown
+          - admin = current_user.admin? ? "Admin - " : nil
+          %a.nav-link.dropdown-toggle{id: 'profile_dropdown', role: 'button', href: "#", data: {toggle: "dropdown" }}= "#{admin} #{current_user.username}"
+          .dropdown-menu{"aria-labelledby" =>"profile_dropdown"}  
+            = link_to "View Profile", user_path(current_user), class: %w(text-dark dropdown-item)
+            = link_to "Edit Profile", edit_user_path(current_user), class: %w(text-dark dropdown-item)
+            = link_to "Delete Profile", user_path(current_user), method: :delete, class: %w(text-danger dropdown-item), data: { confirm: 'Are you sure?' }
+        %li.nav-item
+          = link_to "Log Out", logout_path, class: %w(text-light nav-link), method: :delete
+      - else
+        %li.nav-item
+          = link_to "Login", login_path, class: %w(text-light nav-link)
+
     / %form.form-inline.my-2.my-lg-0
     /   %input.form-control.mr-sm-2{type: "search", placeholder: "Search", "aria-label" => "Search"}
     /   %button.btn.btn-outline-success.my-2.my-sm-0{type: "submit"} Search

@@ -1,0 +1,21 @@
+%h1.text-center.mt-4 Welcome back
+
+.container
+  .row.justify-content-center.mt-4
+    .col-6
+      = form_with(scope: :session, url: login_path, class: %w(shadow p-3 mb-4 bg-info rounded), local: true) do |f|
+        .row.form-group
+          = f.label :username, class: %w(col-2 col-form-label text-white)
+          .col-sm-10
+            = f.text_field :username, placeholder: "Enter a username", class: "form-control shadow rounded"
+        .row.form-group
+          = f.label :password, class: %w(col-2 col-form-label text-white)
+          .col-sm-10
+            =f.text_field :password, placeholder: "Enter your password", class: %w(form-control shadow rouned)
+
+        .row.form-group.justify-content-center
+          = f.submit "Log In", class: %w(btn btn-outline-light btn-lg)
+
+  .row.justify-content-center
+    = link_to '[ Cancel - Return to Home Page ]', root_path, class: %w(text-info)
+

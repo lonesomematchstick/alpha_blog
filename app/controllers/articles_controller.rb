@@ -1,8 +1,10 @@
 class ArticlesController < ApplicationController
   before_action :fetch_article, only: [:show, :edit, :update, :destroy]
+  before_action :require_user, except: [:show, :index]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
 
   def index
-    @articles = Article.all
+    @articles = Article.page(params[:page])
   end
 
   def show
@@ -14,7 +16,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-    @article.user = User.find(User.pluck(:id).sample)
+    @article.user = current_user
 
     if @article.save
       flash[:notice] = "The article was successfully created!"
@@ -57,6 +59,13 @@ class ArticlesController < ApplicationController
 
   def fetch_article
     @article = Article.find(params[:id])
+  end
+
+  def require_same_user
+    if (current_user != @article.user) && !current_user.admin?
+      flash[:alert] = "You cannot perform this action on another user's articles."
+      redirect_to @article
+    end
   end
   
 end
