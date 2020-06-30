@@ -1,12 +1,16 @@
 class UsersController < ApplicationController
-
+ 
   before_action :fetch_user, only: [:show, :edit, :update, :destroy]
+  before_action :require_user, only: [:edit, :update, :destroy]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
 
-  # def index
-  #   @articles = Article.all
-  # end
+
+  def index
+    @users = User.page(params[:page])
+  end
 
   def show
+    @user_articles = @user.articles
   end
 
   def new
@@ -17,7 +21,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      flash[:notice] = "The user was successfully created!"
+      session[:user_id] = @user.id
+      flash[:notice] = "Welcome, #{@user.username}! Your account was successfully created!"
       redirect_to @user
     else
       flash[:alert] = "Uh oh! The user was not created!"
@@ -31,7 +36,7 @@ class UsersController < ApplicationController
   def update
     @user.update(user_params)
     if @user.save
-      flash[:notice] = "The user was successfully updated!"
+      flash[:notice] = "Your account details were successfully updated!"
       redirect_to @user
     else
       flash[:alert] = "Uh oh! The user was not updated!"
@@ -41,7 +46,8 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    flash[:alert] = "The user was destroyed."
+    session[:user_id] = nil unless current_user.admin?
+    flash[:alert] = "Account and all associated articles have been deleted."
     redirect_to root_path
   end
 
@@ -59,4 +65,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def require_same_user
+    if current_user != @user && !current_user.admin?
+      flash[:alert] = "You cannot perform this action on another user."
+      redirect_to user_path(current_user)
+    end
+  end
 end

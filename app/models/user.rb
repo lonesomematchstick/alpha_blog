@@ -1,9 +1,10 @@
 class User < ApplicationRecord
   has_secure_password
+  paginates_per 5
 
   before_save { self.email = email.downcase }
 
-  has_many :articles
+  has_many :articles, dependent: :destroy
 
   validates :username, presence: true, 
                        length: { minimum: 3, maximum: 25 },
@@ -15,5 +16,6 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX }
 
 
+  scope :admins, -> { where(admin: true) }
   
 end

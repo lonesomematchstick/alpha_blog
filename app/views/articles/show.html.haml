@@ -4,10 +4,15 @@
   .row.justify-content-center
     .col-md-8
       .card.text-center.shadow.mb-5.bg-light.rounded
-        .card-header.font-italic= "by #{@article.user.username}"
+        .card-header
+          .row.mb-3.justify-content-center
+            = "by #{@article.user.username}"
+          .row.justify-content-center
+            = link_to gravatar_for(@article.user), user_path(@article.user)
         .card-body
           .card-text.text-left= simple_format(@article.description)
-          = link_to "Edit Article", edit_article_path(@article), class: %w( btn btn-outline-info )
-          = link_to "Delete Article", article_path(@article), method: :delete, data: { confirm: "Are you sure?" }, class: %w( btn btn-outline-danger )
+          - if logged_in? && (@article.user == current_user || current_user.admin?) 
+            = link_to "Edit Article", edit_article_path(@article), class: %w( btn btn-outline-info )
+            = link_to "Delete Article", article_path(@article), method: :delete, data: { confirm: "Are you sure?" }, class: %w( btn btn-outline-danger )
         .card-footer.text-muted
           .small= "Created #{time_ago_in_words(@article.updated_at)} ago"
