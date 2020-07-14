@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: articles
+# Table name: article_categories
 #
 #  id          :integer          not null, primary key
 #  created_at  :datetime         not null
@@ -13,13 +13,10 @@
 #  index_article_categories_on_article_id   (article_id)
 #  index_article_categories_on_category_id  (category_id)
 #
-class Article < ApplicationRecord
-  # paginates_per 10
-  
-  belongs_to :user
-  has_many :article_categories
-  has_many :categories, through: :article_categories
-  
-  validates :title, presence: true
-  validates :description, presence: true
+
+class ArticleCategory < ApplicationRecord
+
+  belongs_to :article
+  belongs_to :category
+
 end

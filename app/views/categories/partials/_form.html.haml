@@ -1,0 +1,17 @@
+.container
+  .row.justify-content-center
+    .col-10
+      = render partial: "shared/errors", locals: {f: @category}
+
+  .row.justify-content-center
+    .col-7
+      = form_with(model: @category, class: %w(shadow p-3 mb-4 bg-info rounded), local: true) do |f|
+        .row.form-group
+          .col-sm-3
+            = f.label :name, "Category Name", class: %w(text-white)
+          .col-sm-6
+            = f.text_field :name, placeholder: "Name", class: "form-control shadow rounded"
+
+        .row.form-group.justify-content-center
+          = f.submit class: %w(btn btn-success btn-lg)
+          = link_to "Cancel", categories_path, class: %w(btn btn-warning btn-lg ml-3)

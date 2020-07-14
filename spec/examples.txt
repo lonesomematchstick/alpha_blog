@@ -1,0 +1,5 @@
+example_id                                      | status | run_time        |
+----------------------------------------------- | ------ | --------------- |
+./spec/features/categories_listing_spec.rb[1:1] | passed | 0.06975 seconds |
+./spec/features/create_category_spec.rb[1:1]    | passed | 1.11 seconds    |
+./spec/features/create_category_spec.rb[1:2]    | passed | 1.56 seconds    |

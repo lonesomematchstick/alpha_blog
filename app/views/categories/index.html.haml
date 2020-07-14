@@ -1,0 +1,20 @@
+.row
+  .col-sm-3.ml-auto
+    =link_to 'New Category', new_category_path, class: %w(btn btn-warning mt-4 )
+%h1.text-center.mb-4 Categories 
+
+- @categories.each do |category|
+  .container
+    .row.justify-content-center
+      .col-md-8
+        .card.text-center.shadow.mb-5.bg-light.rounded
+          .card-header.font-italic=  category.name
+          .card-body
+            %h2= link_to "#{category.name}", category_path(category), class: %w( card-title font-weight-bold text-success)
+            = link_to 'View Articles', category_path(category), class: %w( btn btn-outline-success )
+            - if logged_in? && current_user.admin?
+              = link_to 'Edit Category', edit_category_path(category), class: %w( btn btn-outline-info )
+              = link_to 'Delete Category', category_path(category), method: :delete, class: %w( btn btn-outline-danger ), data: {confirm: "Are you sure?"}
+          .card-footer.text-muted 
+            .small= "Includes #{pluralize(category.articles.count, 'article')}"
+
