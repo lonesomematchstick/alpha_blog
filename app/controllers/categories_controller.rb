@@ -22,7 +22,6 @@ class CategoriesController < ApplicationController
 
     if @category.save
       flash[:notice] = "Category was successfully created."
-      # redirect_to @category
       redirect_to categories_path
     else
       flash[:alert] = "Category was not created."
@@ -39,6 +38,12 @@ class CategoriesController < ApplicationController
       flash[:alert] = "Uh oh! The category was not updated!"
       render 'edit'
     end
+  end
+
+  def destroy
+    @category.destroy
+    flash[:alert] = "The category was destroyed."
+    redirect_to categories_path
   end
 
   private
