@@ -14,7 +14,7 @@
             %h2= link_to "#{article.title}", article_path(article), class: %w( card-title font-weight-bold text-success)
             %p.card-text= "#{article.description.truncate(50)}"
             = link_to 'View', article_path(article), class: %w( btn btn-outline-success )
-            - if logged_in? && (article.user == current_user) || current_user.admin?
+            - if logged_in? && (article.user == current_user) || current_user && current_user.admin?
               = link_to 'Edit', edit_article_path(article), class: %w( btn btn-outline-info )
               = link_to 'Delete', article_path(article), method: :delete, class: %w( btn btn-outline-danger ), data: {confirm: "Are you sure?"}
           .card-footer.text-muted 
