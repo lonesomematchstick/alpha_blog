@@ -14,6 +14,10 @@
           = f.label :description, class: %w(col-2 col-form-label text-white)
           .col-sm-10
             =f.text_area :description, rows: 10, placeholder: "Description", class: %w(form-control shadow rouned)
+        .row.form-group
+          = f.label :categories, class: %w(col-2 col-form-label text-white)
+          .col-sm-10
+            = f.collection_select(:category_ids, Category.all, :id, :name, { prompt: 'Select categories for this article:' }, { multiple: true, size: 4, class: %w(custom-select shadow rounded) } )
 
         .row.form-group.justify-content-center
           = f.submit class: %w(btn btn-outline-light btn-lg)

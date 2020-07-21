@@ -9,6 +9,11 @@
             = "by #{@article.user.username}"
           .row.justify-content-center
             = link_to gravatar_for(@article.user), user_path(@article.user)
+
+          .row.justify-content-center
+            - if @article.categories.any?
+              - @article.categories.each do |category|
+                %span= link_to "#{category.name}", category_path(category), class: %w(badge badge-pill badge-info mt-3 ml-1)
         .card-body
           .card-text.text-left= simple_format(@article.description)
           - if logged_in? && (@article.user == current_user || current_user.admin?) 

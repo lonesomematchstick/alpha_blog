@@ -8,6 +8,10 @@
           .card-header.font-italic= "Posted by #{article.user.username}"
           .card-body
             %h2= link_to "#{article.title}", article_path(article), class: %w( card-title font-weight-bold text-success)
+            .row.justify-content-center
+              - if article.categories.any?
+                - article.categories.each do |category|
+                  %span= link_to "#{category.name}", category_path(category), class: %w(badge badge-pill badge-info my-1 ml-1)
             %p.card-text= "#{article.description.truncate(50)}"
             = link_to 'View', article_path(article), class: %w( btn btn-outline-success )
             - if logged_in? && (article.user == current_user) || current_user.admin?

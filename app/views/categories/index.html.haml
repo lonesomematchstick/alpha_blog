@@ -13,6 +13,7 @@
           .card-header.font-italic=  category.name
           .card-body
             %h2= link_to "#{category.name}", category_path(category), class: %w( card-title font-weight-bold text-success)
+            %p= pluralize(category.articles.count, "articles")
             = link_to 'View Articles', category_path(category), class: %w( btn btn-outline-success )
             - if logged_in? && current_user.admin?
               = link_to 'Edit Category', edit_category_path(category), class: %w( btn btn-outline-info )

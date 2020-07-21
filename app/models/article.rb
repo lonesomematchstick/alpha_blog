@@ -5,8 +5,8 @@
 #  id          :integer          not null, primary key
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  article_id  :integer
-#  category_id :integer
+#  title       :string
+#  descripton  :string
 #
 # Indexes
 #
