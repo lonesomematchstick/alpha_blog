@@ -5,8 +5,10 @@
 
   .collapse.navbar-collapse#navbarSupportedContent
     %ul.navbar-nav.mr-auto
+      / Bloggers
       %li.nav-item
         = link_to "Bloggers", users_path, class: %w(text-light nav-link)
+      / Articles Dropdown
       %li.nav-item.dropdown
         %a.nav-link.dropdown-toggle{id: 'articles_dropdown', role: 'button', href: "#", data: {toggle: "dropdown" }} Articles
         .dropdown-menu{"aria-labelledby" =>"articles_dropdown"}
@@ -15,6 +17,15 @@
             = link_to "Create New Article", new_article_path, class: %w(dropdown-item)
           .dropdown-divider
           %a.dropdown-item{href: '#'} Foo Bar
+      / Categories Dropdown
+      %li.nav-item.dropdown
+        %a.nav-link.dropdown-toggle{id: 'categories_dropdown', role: 'button', href: "#", data: {toggle: "dropdown" }} Categories
+        .dropdown-menu{"aria-labelledby" =>"categories_dropdown"}
+          = link_to "View Categories", categories_path, class: %w(dropdown-item)
+          - if logged_in? && current_user.admin?
+            .dropdown-divider
+            = link_to "Create New Category", new_category_path, class: %w(dropdown-item)
+      / Profile
       - if logged_in?
         %li.nav-item.dropdown
           - admin = current_user.admin? ? "Admin - " : nil
@@ -30,7 +41,3 @@
           = link_to "Login", login_path, class: %w(text-light nav-link)
         %li.nav-item
           = link_to "Sign Up", signup_path, class: %w(text-light nav-link)
-
-    / %form.form-inline.my-2.my-lg-0
-    /   %input.form-control.mr-sm-2{type: "search", placeholder: "Search", "aria-label" => "Search"}
-    /   %button.btn.btn-outline-success.my-2.my-sm-0{type: "submit"} Search

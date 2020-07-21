@@ -1,6 +1,8 @@
-.row
-  .col-sm-3.ml-auto
-    =link_to 'New Category', new_category_path, class: %w(btn btn-warning mt-4 )
+- if logged_in? && current_user.admin?
+  .row
+    .col-sm-3.ml-auto
+      =link_to 'New Category', new_category_path, class: %w(btn btn-warning mt-4 )
+
 %h1.text-center.mb-4 Categories 
 
 - @categories.each do |category|
@@ -18,3 +20,6 @@
           .card-footer.text-muted 
             .small= "Includes #{pluralize(category.articles.count, 'article')}"
 
+
+.row.justify-content-center
+  = paginate @categories

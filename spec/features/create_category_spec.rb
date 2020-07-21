@@ -1,7 +1,11 @@
 require 'rails_helper'
+include TestingHelpers
 
 RSpec.feature 'Creating a category', type: :feature do
-  scenario 'User creates a new category' do
+  let!(:admin) { create(:user, :admin) }
+
+  scenario 'Admin creates a new category' do
+    login(admin)
     visit new_category_path
     fill_in 'Name', with: 'Pets'
     click_button 'Create Category'
@@ -11,6 +15,7 @@ RSpec.feature 'Creating a category', type: :feature do
   end
 
   scenario 'Invalid category creation' do
+    login(admin)
     visit new_category_path
     fill_in 'Name', with: ''
     click_button 'Create Category'
