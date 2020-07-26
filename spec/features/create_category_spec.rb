@@ -1,8 +1,8 @@
 require 'rails_helper'
-include TestingHelpers
 
 RSpec.feature 'Creating a category', type: :feature do
   let!(:admin) { create(:user, :admin) }
+  let!(:user) { create(:user) }
 
   scenario 'Admin creates a new category' do
     login(admin)

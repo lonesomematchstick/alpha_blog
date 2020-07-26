@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :integer          not null, primary key
+#  admin           :boolean          default(FALSE)
+#  email           :string
+#  password_digest :string
+#  username        :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
 require 'rails_helper'
 
 RSpec.describe User, type: :model do

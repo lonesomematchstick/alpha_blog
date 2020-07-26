@@ -1,5 +1,5 @@
 require 'rails_helper'
-include TestingHelpers
+include ControllerMacros
 
 RSpec.describe CategoriesController, type: :controller do
 

@@ -1,5 +1,37 @@
-example_id                                      | status | run_time        |
------------------------------------------------ | ------ | --------------- |
-./spec/features/categories_listing_spec.rb[1:1] | passed | 0.06975 seconds |
-./spec/features/create_category_spec.rb[1:1]    | passed | 1.11 seconds    |
-./spec/features/create_category_spec.rb[1:2]    | passed | 1.56 seconds    |
+example_id                                                | status | run_time        |
+--------------------------------------------------------- | ------ | --------------- |
+./spec/controllers/categories_controller_spec.rb[1:1:1:1] | passed | 0.01505 seconds |
+./spec/controllers/categories_controller_spec.rb[1:1:2:1] | passed | 0.01604 seconds |
+./spec/controllers/categories_controller_spec.rb[1:1:3:1] | passed | 0.01564 seconds |
+./spec/controllers/categories_controller_spec.rb[1:1:4:1] | passed | 0.01428 seconds |
+./spec/controllers/categories_controller_spec.rb[1:2:1:1] | passed | 0.02051 seconds |
+./spec/controllers/categories_controller_spec.rb[1:2:2:1] | passed | 0.02186 seconds |
+./spec/controllers/categories_controller_spec.rb[1:2:3:1] | passed | 0.02057 seconds |
+./spec/controllers/categories_controller_spec.rb[1:2:4:1] | passed | 0.02977 seconds |
+./spec/controllers/categories_controller_spec.rb[1:3:1:1] | passed | 0.0167 seconds  |
+./spec/controllers/categories_controller_spec.rb[1:3:2:1] | passed | 0.0154 seconds  |
+./spec/controllers/categories_controller_spec.rb[1:3:3:1] | passed | 0.0508 seconds  |
+./spec/controllers/categories_controller_spec.rb[1:3:4:1] | passed | 0.02283 seconds |
+./spec/features/categories_listing_spec.rb[1:1]           | passed | 0.07332 seconds |
+./spec/features/create_category_spec.rb[1:1]              | passed | 1.19 seconds    |
+./spec/features/create_category_spec.rb[1:2]              | passed | 1.15 seconds    |
+./spec/features/sign_up_spec.rb[1:1]                      | passed | 0.60726 seconds |
+./spec/models/article_categories_spec.rb[1:1:1]           | passed | 0.00377 seconds |
+./spec/models/article_categories_spec.rb[1:1:2]           | passed | 0.0094 seconds  |
+./spec/models/article_spec.rb[1:1:1]                      | passed | 0.10696 seconds |
+./spec/models/article_spec.rb[1:1:2]                      | passed | 0.00364 seconds |
+./spec/models/article_spec.rb[1:2:1]                      | passed | 0.00679 seconds |
+./spec/models/article_spec.rb[1:2:2]                      | passed | 0.00471 seconds |
+./spec/models/category_spec.rb[1:1:1]                     | passed | 0.0024 seconds  |
+./spec/models/category_spec.rb[1:2:1]                     | passed | 0.00652 seconds |
+./spec/models/category_spec.rb[1:2:2]                     | passed | 0.00826 seconds |
+./spec/models/user_spec.rb[1:1:1]                         | passed | 0.00276 seconds |
+./spec/models/user_spec.rb[1:2:1]                         | passed | 0.01155 seconds |
+./spec/models/user_spec.rb[1:2:2]                         | passed | 0.00947 seconds |
+./spec/models/user_spec.rb[1:2:3]                         | passed | 0.01177 seconds |
+./spec/models/user_spec.rb[1:2:4]                         | passed | 0.01084 seconds |
+./spec/models/user_spec.rb[1:2:5]                         | passed | 0.00894 seconds |
+./spec/models/user_spec.rb[1:2:6]                         | passed | 0.00967 seconds |
+./spec/models/user_spec.rb[1:3:1]                         | passed | 0.01015 seconds |
+./spec/models/user_spec.rb[1:3:2]                         | passed | 0.00662 seconds |
+./spec/models/user_spec.rb[1:4]                           | passed | 0.0064 seconds  |
